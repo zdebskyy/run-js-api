@@ -4,7 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const runApiRouter = require("./runApi/runApi.router");
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 8080;
 
 module.exports = class Server {
   constructor() {
