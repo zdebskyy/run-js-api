@@ -140,10 +140,10 @@
         fetch("/api/log-get", {
           method: "GET", // or 'PUT'
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "text/plain",
           },
         })
-          .then((response) => response.json())
+          .then((response) => response.text())
           .then((data) => {
             console.log("Success:", data);
             $("#log").val(data);
