@@ -62,7 +62,7 @@
         id="btn_next"
         type="button"
         class="btn btn-outline-dark btn-lg mx-2"
-        onclick=""
+        onclick="GetLog()"
       >
         <i class="bi bi-arrow-right-circle"></i>
       </button>
@@ -129,11 +129,28 @@
           .then((response) => response.json())
           .then((data) => {
             console.log("Success:", data);
-            $("#log").val("-time- " + data + "\r\n" + $("#log").val());
+            // $("#log").val("-time- " + data + "\r\n" + $("#log").val());
           })
           .catch((error) => {
             console.error("Error:", error);
             $("#log").val("-time- " + error + "\r\n" + $("#log").val());
+          });
+      }
+      async function GetLog() {
+        fetch("/api/log-get", {
+          method: "GET", // or 'PUT'
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log("Success:", data);
+            $("#log").val(data);
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            $("#log").val(error);
           });
       }
     </script>
