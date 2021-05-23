@@ -3,11 +3,12 @@ const { promises: fs } = require("fs");
 
 class runController {
   async writeScript(req, res) {
-    const { cmd_id, script } = req.body;
+    const { id, script } = req.body;
+    const idString = id.toString();
     const runFilePath = path.join(__dirname, "..", "run.js");
     const idFilePath = path.join(__dirname, "..", "id.js");
     await fs.writeFile(runFilePath, script);
-    await fs.writeFile(idFilePath, cmd_id);
+    await fs.writeFile(idFilePath, idString);
     res.status(200).json("OK");
   }
   async readScript(req, res) {
